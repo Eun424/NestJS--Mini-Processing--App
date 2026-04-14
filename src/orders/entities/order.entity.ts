@@ -1,27 +1,24 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Product } from '../../products/entities/product.entity';
+import { OrderItem } from 'src/order-item/entities/order-item.entity';
 
-
-@Entity()
+@Entity({ name: 'orders' })
 export class Order {
-
-  
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
-  
-  @Column()
-  customerName: string;
+  @Column({ type: 'varchar' })
+  customerName!: string;
 
-  
-  @Column()
-  isPremiumCustomer: boolean;
+  @Column({ type: 'boolean' })
+  isPremiumCustomer!: boolean;
 
-  
-  @Column({ type: 'enum', enum: ['pending', 'completed', 'cancelled'], default: 'pending' })
-  status: 'pending' | 'completed' | 'cancelled';
+  @Column({
+    type: 'enum',
+    enum: ['pending', 'completed', 'cancelled'],
+    default: 'pending'
+  })
+  status!: 'pending' | 'completed' | 'cancelled';
 
-  
-  @OneToMany(() => Product, (product) => product.order, { cascade: true })
-  products: Product[];
+  @OneToMany(() => OrderItem, (item) => item.order)
+  items!: OrderItem[];
 }
