@@ -5,7 +5,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
-import { getDatabaseConfig } from './config/database.config'; // 👈 make sure path is correct
+import { getDatabaseConfig } from './config/database.config'; 
+import { OrderItemModule } from './order-item/order-item.module';
+
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { getDatabaseConfig } from './config/database.config'; // 👈 make sure 
     }),
      OrdersModule,
     ProductsModule,
+    OrderItemModule,
+  
   ],
   controllers: [AppController],
   providers: [AppService],

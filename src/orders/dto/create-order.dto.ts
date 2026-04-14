@@ -1,16 +1,17 @@
-import { IsNotEmpty, IsBoolean, IsArray, ValidateNested } from 'class-validator';
+import { IsNotEmpty, IsBoolean} from 'class-validator';
 import { Type } from 'class-transformer';
-import { CreateProductDto } from '../../products/dto/create-product.dto';
+
 
 export class CreateOrderDto {
   @IsNotEmpty()
-  customerName: string;
+  customerName!: string;
 
   @IsBoolean()
-  isPremiumCustomer: boolean;
+  @Type(() => Boolean)
+  isPremiumCustomer!: boolean;
 
-  @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() => CreateProductDto)
-  products: CreateProductDto[];
+   items!: {
+    productId: number;
+    quantity: number;
+  }[];
 }

@@ -5,6 +5,8 @@
 ## Clone the repository
 ```bash 
 git clone https://github.com/Eun424/NestJS--Mini-Processing--App.git
+
+```bash
 cd order-system
 
 
@@ -16,7 +18,7 @@ npm install
 
  ``` 
  ## Set up PostgreSQL database 
- CREATE DATABASE orders_db;
+ CREATE DATABASE mini_order_db;
 
  ### Run Migrations 
  ```bash
@@ -28,6 +30,7 @@ npm install
 
 ```bash
 # development
+$ cd into order-system
 $ npm run start:dev
 
 # watch mode
